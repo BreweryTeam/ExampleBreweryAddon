@@ -1,30 +1,24 @@
-package dev.jsinco.brewery;
+package dev.jsinco.brewery
 
-import com.dre.brewery.BreweryPlugin;
-import com.dre.brewery.api.addons.AddonCommand;
-import com.dre.brewery.configuration.files.Lang;
-import org.bukkit.command.CommandSender;
+import com.dre.brewery.BreweryPlugin
+import com.dre.brewery.api.addons.AddonCommand
+import com.dre.brewery.configuration.files.Lang
+import org.bukkit.command.CommandSender
 
-import java.util.List;
-
-public class MyCommand implements AddonCommand {
-    @Override
-    public void execute(BreweryPlugin breweryPlugin, Lang lang, CommandSender sender, String label, String[] args) {
-        sender.sendMessage("Hello, world!");
+class MyCommand : AddonCommand {
+    override fun execute(breweryPlugin: BreweryPlugin, lang: Lang, sender: CommandSender, label: String, args: Array<String>) {
+        sender.sendMessage("Hello, world!")
     }
 
-    @Override
-    public List<String> tabComplete(BreweryPlugin breweryPlugin, CommandSender sender, String label, String[] args) {
-        return null;
+    override fun tabComplete(breweryPlugin: BreweryPlugin, sender: CommandSender, label: String, args: Array<String>): List<String>? {
+        return null
     }
 
-    @Override
-    public String permission() {
-        return "brewery.command.mycommand";
+    override fun permission(): String {
+        return "brewery.command.mycommand"
     }
 
-    @Override
-    public boolean playerOnly() {
-        return false;
+    override fun playerOnly(): Boolean {
+        return false
     }
 }

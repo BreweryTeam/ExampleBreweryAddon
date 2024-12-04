@@ -1,39 +1,35 @@
-package dev.jsinco.brewery;
+package dev.jsinco.brewery
 
-import com.dre.brewery.api.addons.AddonInfo;
-import com.dre.brewery.api.addons.BreweryAddon;
+import com.dre.brewery.api.addons.AddonInfo
+import com.dre.brewery.api.addons.BreweryAddon
 
 @AddonInfo(name = "MyAddon", version = "1.0", author = "Jonah")
-public class MyAddon extends BreweryAddon {
+class MyAddon : BreweryAddon() {
 
-    @Override
-    public void onAddonPreEnable() {
-        if (isFolia()) { // isPaper() is also available
-            getAddonLogger().info("This addon is running on Folia.");
+    override fun onAddonPreEnable() {
+        if (isFolia) { // isPaper() is also available
+            addonLogger.info("This addon is running on Folia.")
         } else {
-            getAddonLogger().info("This addon is not running on Folia.");
+            addonLogger.info("This addon is not running on Folia.")
         }
     }
 
-    @Override
-    public void onAddonEnable() {
-        registerListener(new MyListeners());
+    override fun onAddonEnable() {
+        registerListener(MyListeners())
 
-        MyConfig config = getAddonConfigManager().getConfig(MyConfig.class);
-        getAddonLogger().info(config.getMyString());
+        val config = addonConfigManager.getConfig(MyConfig::class.java)
+        addonLogger.info(config.myString)
 
-        registerCommand("mycommand", new MyCommand());
+        registerCommand("mycommand", MyCommand())
     }
 
-    @Override
-    public void onAddonDisable() {
+    override fun onAddonDisable() {
         // Code which is run when the addon is disabled
     }
 
-    @Override
-    public void onBreweryReload() {
+    override fun onBreweryReload() {
         // Code which is run when the `/breweryx reload` command is executed
-        MyConfig config = getAddonConfigManager().getConfig(MyConfig.class);
-        getAddonLogger().info(config.getMyString());
+        val config = addonConfigManager.getConfig(MyConfig::class.java)
+        addonLogger.info(config.myString)
     }
 }

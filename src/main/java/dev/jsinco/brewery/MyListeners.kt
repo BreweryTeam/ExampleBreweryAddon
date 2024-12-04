@@ -1,13 +1,12 @@
-package dev.jsinco.brewery;
+package dev.jsinco.brewery
 
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerJoinEvent
 
-public class MyListeners implements Listener {
-
+class MyListeners : Listener {
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage("Welcome to the server!");
+    fun onPlayerJoin(event: PlayerJoinEvent) {
+        event.player.sendMessage("Welcome to the server!")
     }
 }

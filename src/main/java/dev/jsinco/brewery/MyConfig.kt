@@ -1,16 +1,14 @@
-package dev.jsinco.brewery;
+package dev.jsinco.brewery
 
-import com.dre.brewery.api.addons.AddonConfigFile;
-import lombok.Getter;
-import lombok.Setter;
+import com.dre.brewery.api.addons.AddonConfigFile
 
-@Getter
-@Setter
-public class MyConfig extends AddonConfigFile {
 
+class MyConfig : AddonConfigFile() {
     // OR You can use com.dre.brewery.depend.okaeri.configs.annotation.Exclude annotation
-    private transient boolean someFieldWhichShouldBeIgnored = true;
+    @Transient
+    private val someFieldWhichShouldBeIgnored = true
 
 
-    private String myString = "Hello, World!";
+    @JvmField // Instructs the Kotlin compiler not to generate getters/setters for this property and expose it as a field.
+    val myString = "Hello, World!"
 }

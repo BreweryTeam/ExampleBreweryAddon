@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    kotlin("jvm")
 }
 
 group = "dev.jsinco.brewery"
@@ -17,7 +18,10 @@ dependencies {
     // We need to include our own copy of whatever server software we're writing against!
     compileOnly("org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT")
 
-    // Lombok is recommended if using configs in Java
-    compileOnly("org.projectlombok:lombok:1.18.30")
-    annotationProcessor("org.projectlombok:lombok:1.18.30")
+    // Do NOT shade Kotlin's standard library, BreweryX loads it at runtime!
+    compileOnly(kotlin("stdlib-jdk8"))
+}
+
+kotlin {
+    jvmToolchain(17)
 }
