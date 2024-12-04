@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    // Include the latest release of BreweryX instead of this version.
     compileOnly("com.github.BreweryTeam:BreweryX:snapshot-SNAPSHOT")
 
     // We need to include our own copy of whatever server software we're writing against!
